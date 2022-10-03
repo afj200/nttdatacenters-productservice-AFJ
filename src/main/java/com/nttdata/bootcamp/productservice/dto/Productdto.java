@@ -10,6 +10,9 @@ public class Productdto {
 	
 	/* Puerto donde se ha desplegado el servicio */
 	private String serverPort;
+	
+	/* Descripcion producto */
+	private String value;
 
 	public int getProductId() {
 		return productId;
@@ -34,6 +37,15 @@ public class Productdto {
 	public void setServerPort(String serverPort) {
 		this.serverPort = serverPort;
 	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.nttdata.bootcamp.productservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,9 @@ public class ProductServiceImpl implements ProductServiceI{
 	@Autowired
 	Environment environment;
 
+	@Value("${some.value}")
+	private String myValue;
+	
 	@Override
 	public Productdto getProduct(int productId) {
 		
@@ -19,6 +23,7 @@ public class ProductServiceImpl implements ProductServiceI{
 			product.setProductId(productId);
 			product.setChannel("GET");
 			product.setServerPort(environment.getProperty("local.server.port"));
+			product.setValue(myValue);
 			return product;
 		
 	}
@@ -30,6 +35,7 @@ public class ProductServiceImpl implements ProductServiceI{
 		product.setProductId(productId);
 		product.setChannel("POST");
 		product.setServerPort(environment.getProperty("local.server.port"));
+		product.setValue(myValue);
 		return product;
 	}
 
