@@ -1,5 +1,8 @@
 server:
- port: 8088
+ port: 8080
 spring:
   application:
     name: product-service
+eureka:
+  client:
+    service-url:defaultZone: http://localhost:8761
