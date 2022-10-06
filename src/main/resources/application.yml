@@ -3,6 +3,8 @@ spring:
     import: configserver:http://localhost:8888
   application:
     name: product-service
+  profiles:
+    active: produccion
   cloud:
     config:
       enabled: true
@@ -11,4 +13,32 @@ eureka:
   client:
      service-url:
       defaultZone: http://localhost:8761/eureka
+      
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      productService:
+        register-health-indicator: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 2
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 15s
+        permitted-number-of-calls-in-half-open-state: 1
+        sliding-window-size: 4
+        record-exceptions:
+          - org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+        
+    
   

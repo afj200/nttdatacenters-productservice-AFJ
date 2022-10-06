@@ -15,4 +15,9 @@ public final class EndPointUris {
 	 * Terminación dónde se solicita el ID.
 	 */
 	public static final String ID = "/{id}";
+	
+	/**
+	 * 
+	 */
+	public static final String PRODUCT_SERVICE = "productService";
 }

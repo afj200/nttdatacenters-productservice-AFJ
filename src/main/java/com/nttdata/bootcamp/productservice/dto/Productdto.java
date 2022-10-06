@@ -2,7 +2,7 @@ package com.nttdata.bootcamp.productservice.dto;
 
 public class Productdto {
 
-	/* Identiificador de producto */
+	/* Identificador de producto */
 	private int productId;
 	
 	/* Descripción del producto */
@@ -45,7 +45,18 @@ public class Productdto {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
+	public Productdto(int productId, String channel, String serverPort, String value) {
+		super();
+		this.productId = productId;
+		this.channel = channel;
+		this.serverPort = serverPort;
+		this.value = value;
+	}
+
+	public Productdto() {
+		super();
+	}
 	
 	
 	
